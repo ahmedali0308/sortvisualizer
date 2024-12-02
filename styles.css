@@ -61,7 +61,8 @@
         color: white;
         align-items: center;
         padding: 0px 77px;
-        height: 80px;
+        height: 8.7vh;
+        min-height: 60px;
         justify-content: space-between;
     }
 
@@ -121,8 +122,8 @@
     }
 
     main a {
-        width: 200px;
-        height: 50px;
+        width: 21.7vh;
+        height: 5.4vh;
         text-decoration: none;
         display: flex;
         align-items: center;
@@ -132,6 +133,7 @@
         justify-content: center;
         transition-duration: 0.4s;
         opacity: 0.7;
+        font-size: 1.7vh;
     }
 
     main a:hover{
@@ -146,9 +148,11 @@
 
     footer {
         background-color: #373737;
-        height: 130px;
+        height: 14vh;
+        min-height: 30px;
         color: white;
         display: flex;
+        overflow: hidden;
         justify-content: center;
     }
 
@@ -158,7 +162,7 @@
     }
 
     footer ul.outer{
-        padding: 30px 0;
+        padding: 3.2vh 0;
         display: flex;
         flex-direction: row;
         gap: 20%;
