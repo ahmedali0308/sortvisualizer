@@ -267,4 +267,21 @@
         .diagram {
             height: 50vh;
         }
+        .navbar .logo img, h1{
+            display: none;
+        }
+
+        ul.navbar {
+            flex-direction: column;
+        }
+
+        ul.navbar ul.sortlist {
+            flex-direction: column;
+            background-color: black;
+            gap: 5px;
+        }
+
+        footer {
+            display: none;
+        }
       }

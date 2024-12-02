@@ -186,3 +186,37 @@
     footer ul.inner li a:visited{
         color: rgb(173, 173, 173);
     }
+
+    @media only screen and (max-width: 800px) {
+        .maintop{
+            flex-direction: column;
+            gap: 20px;
+        }
+        .maintop #interactions{
+            flex-direction: row;
+            gap: 10px;
+        }
+        #interactions button{
+            width: 150px;
+        }
+        .diagram {
+            height: 50vh;
+        }
+        .navbar .logo img, h1{
+            display: none;
+        }
+
+        ul.navbar {
+            flex-direction: column;
+        }
+
+        ul.navbar ul.sortlist {
+            flex-direction: column;
+            background-color: black;
+            gap: 5px;
+        }
+
+        footer {
+            display: none;
+        }
+      }
