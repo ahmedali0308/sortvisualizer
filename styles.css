@@ -1,0 +1,184 @@
+/* General Styling */
+
+    :root{
+        --main-color: #0800FF;
+    }
+
+    * {
+        font-size: 16px;
+        font-family: 'IBM Plex Mono';
+        padding: 0px;
+        margin: 0px;
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: normal;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .bold {
+        font-weight: bold;
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .show-bullet {
+        list-style-type: circle;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        overflow-x: hidden;
+    }
+
+/* Navbar Styling */
+
+    ul.navbar {
+        background-color: #373737;
+        color: white;
+        align-items: center;
+        padding: 0px 77px;
+        height: 80px;
+        justify-content: space-between;
+    }
+
+    ul.navbar a {
+        color: white;
+        text-decoration: none;
+    }
+
+    ul.navbar div.logo {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    ul.navbar div.logo img {
+        width: 60px;
+        height: 60px;
+    }
+
+    ul.navbar ul.sortlist {
+        align-items: center;
+        justify-content: space-between;
+        gap: 77px;
+    }
+
+    ul.navbar a h2 {
+        color: white;
+        background: none;
+        border: none;
+        padding: 2px;
+        transition-duration: 0.4s;
+    }
+
+    ul.navbar a h2:hover {
+        background-color: black;
+    }
+
+/* Main Section Styling */
+
+    div.mainbox {
+        padding: 30px 140px;
+    }
+
+    main ul {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    #mainlist {
+        gap: 40px;
+    }
+
+    main ul#offerlist {
+        list-style-type: circle;
+        gap: 0px;
+        padding-left: 20px;
+    }
+
+    main a {
+        width: 200px;
+        height: 50px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: white;
+        background-color: var(--main-color);
+        justify-content: center;
+        transition-duration: 0.4s;
+        opacity: 0.7;
+    }
+
+    main a:hover{
+        opacity: 1;
+    }
+
+    .blue {
+        color: var(--main-color);
+    }
+
+/* Footer styling */
+
+    footer {
+        background-color: #373737;
+        height: 130px;
+        color: white;
+        display: flex;
+        justify-content: center;
+    }
+
+    footer img {
+        width: 20px;
+        height: 20px;
+    }
+
+    footer ul.outer{
+        padding: 30px 0;
+        display: flex;
+        flex-direction: row;
+        gap: 20%;
+    }
+
+    footer ul.inner{
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer ul.inner li{
+        white-space: nowrap;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    footer ul.inner li a{
+        color: white;
+    }
+    footer ul.inner li a:visited{
+        color: rgb(173, 173, 173);
+    }

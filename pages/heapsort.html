@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sort Visualiser</title>
+    <link rel="icon" href="../images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pagestyle.css">
+</head>
+<body>
+    <header>
+        <ul class="navbar">
+            <li>
+                <div class="logo">
+                    <img src="../images/logo.png" alt="Logo of Website">
+                    <h1>Sort Visualizer</h1>
+                </div>
+            </li>
+            <li>
+                <ul class="sortlist">
+                    <li class="sortelement">
+                        <a href="quicksort.html"><h2>Quicksort</h2></a>
+                    </li>
+                    <li class="sortelement">
+                        <a href="mergesort.html"><h2>Mergesort</h2></a>
+                    </li>
+                    <li class="sortelement">
+                        <a href="bubblesort.html"><h2>Bubblesort</h2></a>
+                    </li>
+                    <li class="sortelement">
+                        <a href="heapsort.html"><h2>Heapsort</h2></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="aboutelement">
+                <a href="../index.html"><h2>About</h2></a>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        
+        <div class="mainbox">
+            <ul class="mainbox_list">
+                <li><ul class="maintop">
+                    <li><h1>Heapsort</h2></li>
+                    <li>
+                        <ul id="interactions">
+                            <li class="slider">
+                                <h2># of Data</h2>
+                                <input class="sliderelement" type="range" min="1" max="1000" value="10" id="myRange">
+                            </li>
+                            <li>
+                                <button class="randomize">Randomize</button>
+                            </li>
+                            <li>
+                                <button class="sort">Sort</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul></li>
+
+                <li><ul class="diagram">
+                </ul></li>
+            </ul>
+        </div>
+
+    </main>
+
+    <footer>
+        <ul class="outer">
+            <li>
+                <ul class="inner">
+                    <li><h2 class="bold">Sort Visualiser</h2></li>
+                    <li><p>Ahmed Ali</p></li>
+                </ul>
+            </li>
+            <li>
+                <ul class="inner">
+                    <li><h2 class="bold">Contact</h2></li>
+                    <li>
+                        <img src="../images/Email.png" alt="Email icon">
+                        <p>ali.ahmed03085@gmail.com</p>
+                    </li>
+                    <li>
+                        <img src="../images/GitHub.png" alt="GitHub icon">
+                        <a target="_blank" href="https://github.com/ahmedali0308"><p>Github</p></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+
+<script src="./scripts/heapsort.js"></script>
+</body>
+</html>
