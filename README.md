@@ -9,4 +9,6 @@ Explore popular algorithms like Bubble Sort, Quick Sort, Heap Sort and Merge Sor
 ### Customizable Experience
 Adjust parameters such as data size and sorting order to see how they affect performance.
 
+## Try it yourself [here](https://ahmedali0308.github.io/sortvisualizer/)!
+
 <sub>*Sort Visualizer was made as a just-for-fun solo project*</sub>
