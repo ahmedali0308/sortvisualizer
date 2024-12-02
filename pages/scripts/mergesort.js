@@ -61,7 +61,7 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
         mergedIndex[mergedIndex.length] = rIndex.shift();
     }
 
-    for (var i=sp; i<sp+merged.length;i++){
+    for (var i=sp+merged.length-1; i>=sp;i--){
         if (!_run) return;
         data[i] = merged[i-sp];
         dataIndex[i] = mergedIndex[i-sp];
