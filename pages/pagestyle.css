@@ -175,7 +175,6 @@
     #interactions .slider{
         display: flex;
         flex-direction: column;
-        align-items: center;
         gap: 10px;
     }
 
@@ -251,4 +250,21 @@
 
       .diagram .bar p{
         padding: 0.3vh 0;
+      }
+
+      @media only screen and (max-width: 800px) {
+        .maintop{
+            flex-direction: column;
+            gap: 20px;
+        }
+        .maintop #interactions{
+            flex-direction: row;
+            gap: 10px;
+        }
+        #interactions button{
+            width: 150px;
+        }
+        .diagram {
+            height: 50vh;
+        }
       }
