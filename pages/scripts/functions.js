@@ -54,6 +54,15 @@ function createDataGraph(){ // DRAWS THE CURRENTLY SAVED DATASET ONTO THE GRAPHI
 function disableSort(){
     _run = false;
     sort_button.style.backgroundColor = BLUE;
+    decolorGraph();
+}
+
+function checkSorted(){
+    for (var i=1; i<data.length; i++){
+        if (data[i]<data[i-1])
+            return false;
+    }
+    return true;
 }
 
 function updateDataGraph(){ // UPDATES THE GRAPHIC BASED ON THE CURRENT DATASET
@@ -86,6 +95,12 @@ function colorGraph(i,color){
     else dataGraphChild.style.backgroundColor = GRAY;
 }
 
+function decolorGraph(){
+    for (var i=0; i<data.length; i++){
+        colorGraph(dataIndex[i]);
+    }
+}
+
 async function runGraph(){
     if (data.length <= 3) return;
     for (var i=0; i<data.length-2; i++){
@@ -98,6 +113,7 @@ async function runGraph(){
         colorGraph(dataIndex[i+1]);
         colorGraph(dataIndex[i+2]);
     };
+    decolorGraph();
 };
 
 slider.addEventListener("input", function(){ // HANDLE SLIDER FOR "# of Data"

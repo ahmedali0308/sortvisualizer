@@ -33,6 +33,7 @@ async function partition(sp, ep){
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
+    if (checkSorted()) return;
     if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     else {
         _run = true;
