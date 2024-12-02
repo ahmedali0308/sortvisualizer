@@ -262,7 +262,7 @@
             gap: 10px;
         }
         #interactions button{
-            width: 150px;
+            width: 100px;
         }
         .diagram {
             height: 50vh;
@@ -273,12 +273,14 @@
 
         ul.navbar {
             flex-direction: column;
+            height: 30vh;
+            justify-content: center;
+            gap:10px;
         }
 
         ul.navbar ul.sortlist {
             flex-direction: column;
-            background-color: black;
-            gap: 5px;
+            gap: 10px;
         }
 
         footer {
