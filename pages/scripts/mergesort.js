@@ -28,7 +28,7 @@ async function mergeSort(arr, arrIndex, sp){
 
 async function render(){
     updateDataGraph();
-    await sleep(100);
+    await sleep(speed);
 }
 
 async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
@@ -65,9 +65,9 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
         if (!_run) return;
         data[i] = merged[i-sp];
         dataIndex[i] = mergedIndex[i-sp];
-        colorGraph(dataIndex[i],BLUE);
+        colorGraph(i,BLUE);
         await render();
-        colorGraph(dataIndex[i]);
+        colorGraph(i);
     }
     return [merged,mergedIndex];
 }
@@ -81,7 +81,7 @@ sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
     if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     else {
         _run = true;
-        sort_button.style.backgroundColor = "red";
+        sort_button.style.backgroundColor = RED;
         await mergeGraph();
         if (_run) await runGraph();
         disableSort();

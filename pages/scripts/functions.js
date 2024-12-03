@@ -10,8 +10,13 @@ const NUMBER_THRESHOLD = 150 // THRESHOLD WHEN TO STOP SHOWING THE SIZE NUMBERS
 
 var _run = false // WHEN THIS IS FALSE THE RUN ANIMATION STOPS
 
+var speed = 100 // SPEED OF ANIMATION IN MS
+
 const BLUE = "#0800FF";
 const GRAY = "#D9D9D9";
+const RED = "red";
+const GREEN = "green";
+const BLACK = "black";
 
 function clearDataGraph(){ // REMOVES ALL THE BARS IN THE GRAPHIC
     while (dataGraph.firstChild) dataGraph.removeChild(dataGraph.lastChild);
@@ -79,7 +84,9 @@ function sleep(delay) {
 }
 
 async function swapData(i,j){ // SWAPS INDICIES i AND j IN THE DATASET
-    await sleep(200);
+    colorGraph(i,BLUE);
+    colorGraph(j,RED);
+    await sleep(speed);
     const data_i = data[i];
     const dataIndex_i = dataIndex[i];
     data[i] = data[j];
@@ -87,17 +94,20 @@ async function swapData(i,j){ // SWAPS INDICIES i AND j IN THE DATASET
     dataIndex[i] = dataIndex[j];
     dataIndex[j] = dataIndex_i;
     updateDataGraph();
+    await sleep(speed);
+    colorGraph(i);
+    colorGraph(j);
 }
 
 function colorGraph(i,color){
-    const dataGraphChild = dataGraph.children[i];
+    const dataGraphChild = dataGraph.children[dataIndex[i]];
     if (color) dataGraphChild.style.backgroundColor = color;
     else dataGraphChild.style.backgroundColor = GRAY;
 }
 
 function decolorGraph(){
     for (var i=0; i<data.length; i++){
-        colorGraph(dataIndex[i]);
+        colorGraph(i);
     }
 }
 
@@ -105,13 +115,13 @@ async function runGraph(){
     if (data.length <= 3) return;
     for (var i=0; i<data.length-2; i++){
         if (!_run) return;
-        colorGraph(dataIndex[i],BLUE);
-        colorGraph(dataIndex[i+1],BLUE);
-        colorGraph(dataIndex[i+2],BLUE);
+        colorGraph(i,BLUE);
+        colorGraph(i+1,BLUE);
+        colorGraph(i+2,BLUE);
         await sleep(400);
-        colorGraph(dataIndex[i]);
-        colorGraph(dataIndex[i+1]);
-        colorGraph(dataIndex[i+2]);
+        colorGraph(i);
+        colorGraph(i+1);
+        colorGraph(i+2);
     };
     decolorGraph();
 };

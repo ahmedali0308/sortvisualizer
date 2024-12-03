@@ -8,26 +8,18 @@ async function quickSort(sp, ep){ // MAIN SORTING ALGORITHM
 
 async function partition(sp, ep){
     const pivot = data[ep];
-    colorGraph(ep,"black");
+    colorGraph(ep,BLACK);
     var i = sp - 1;
     for (var j = sp; j < ep; j++){
         if (!_run) return; // IF ANIMATION WAS CANCELLED STOP ALGORITHM
         if (data[j] < pivot){
             i++;
-            colorGraph(i,"red");
-            colorGraph(j,BLUE);
             await swapData(i,j);
-            colorGraph(i);
-            colorGraph(j);
         }
     }
     i++;
-    colorGraph(i,"green");
-    colorGraph(j,BLUE);
-    await swapData(i,ep);
-    colorGraph(i);
-    colorGraph(j);
     colorGraph(ep);
+    await swapData(i,ep);
     return i;
 
 }
@@ -37,7 +29,7 @@ sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
     if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     else {
         _run = true;
-        sort_button.style.backgroundColor = "red";
+        sort_button.style.backgroundColor = RED;
         await quickSort(0,data.length-1);
         if (_run) await runGraph();
         disableSort();
