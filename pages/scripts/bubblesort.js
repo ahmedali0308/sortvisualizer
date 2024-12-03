@@ -1,12 +1,9 @@
 async function bubbleSort(){
     for (var i=1; i<=data.length;i++){
+        if (!_run) return;
         for (var j=0; j<data.length;j++){
             if (!_run) return;
-            if (data[j+1]) colorGraph(j+1, BLUE);
-            colorGraph(j, RED);
             if (data[j] > data[j + 1]) await swapData(j,j+1);
-            if (data[j+1]) colorGraph(j+1);
-            colorGraph(j);
         }
         colorGraph(data.length-i, GREEN);
     }
