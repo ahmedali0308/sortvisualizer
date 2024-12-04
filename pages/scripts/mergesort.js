@@ -19,7 +19,7 @@ async function mergeSort(arr, arrIndex, sp){
     
     //var lr = await Promise.all([mergeSort(lData,lIndex, sp),mergeSort(rData,rIndex, sp + rData.length)]);
     var l = await mergeSort(lData,lIndex,sp);
-    var r = await mergeSort(rData,rIndex,sp+rData.length);
+    var r = await mergeSort(rData,rIndex,sp+lData.length);
     if (!_run) return;
     //var l = lr[0];
     //var r = lr[1];
@@ -61,19 +61,39 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
         mergedIndex[mergedIndex.length] = rIndex.shift();
     }
 
-    for (var i=sp+merged.length-1; i>=sp;i--){
-        if (!_run) return;
-        data[i] = merged[i-sp];
-        dataIndex[i] = mergedIndex[i-sp];
-        colorGraph(i,BLUE);
-        await render();
-        colorGraph(i);
+    var tempData = [];
+    var tempDataIndex = [];
+
+    for (var i=sp; i<=sp+merged.length-1;i++){ // PUT MERGED INTO TEMPDATA
+        tempData[i] = merged[i-sp];
+        tempDataIndex[i] = mergedIndex[i-sp];
     }
+    for (var i=sp; i<sp+merged.length-1;i++){ // VISUALIZE TEMPDATA INTO DATA
+        // GO THROUGH AGAIN BUT FROM YOUR POSITION SO IGNORE YOURSELF AND EVERYONE BEFORE YOU
+        // FIND SMALLEST DATA
+        // SWAP YOURSELF WITH THAT DATA
+        if (!_run){
+            //data = tempData; 
+            //dataIndex = tempDataIndex;
+            return;
+        }
+        var smallestData = [tempData[sp+merged.length-1],tempDataIndex.indexOf(sp+merged.length-1)]; // VALUE, POS
+        for (var j=i; j<=sp+merged.length-1;j++){
+            if (smallestData[0]>=data[j]){
+                smallestData = [data[j],j];
+            }
+        }
+        if (!(i==smallestData[i])) await swapData(i,smallestData[1]);
+    }
+    if (!_run) return;
     return [merged,mergedIndex];
 }
 
 async function mergeGraph(){
-    await mergeSort(data,dataIndex, 0);
+    var dataSet = await mergeSort(data,dataIndex, 0);
+    //data = dataSet[0];
+    //dataIndex = dataSet[1];
+    //updateDataGraph();
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON

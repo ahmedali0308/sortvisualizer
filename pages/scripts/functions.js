@@ -6,7 +6,7 @@ const dataGraph = document.querySelector(".diagram");
 var data = [];
 var dataIndex = [];
 
-const NUMBER_THRESHOLD = 150 // THRESHOLD WHEN TO STOP SHOWING THE SIZE NUMBERS
+const NUMBER_THRESHOLD = 100 // THRESHOLD WHEN TO STOP SHOWING THE SIZE NUMBERS
 
 var _run = false // WHEN THIS IS FALSE THE RUN ANIMATION STOPS
 
@@ -17,6 +17,9 @@ const GRAY = "#D9D9D9";
 const RED = "red";
 const GREEN = "green";
 const BLACK = "black";
+
+const screenSize = window.screen.width;
+var windowSize =  window.innerWidth;
 
 function clearDataGraph(){ // REMOVES ALL THE BARS IN THE GRAPHIC
     while (dataGraph.firstChild) dataGraph.removeChild(dataGraph.lastChild);
@@ -44,14 +47,13 @@ function createDataGraph(){ // DRAWS THE CURRENTLY SAVED DATASET ONTO THE GRAPHI
         newBar.style.order = i;
         newBar.id = i; // FOR DEBUGGING; NOT CODE RELEVANT
 
-        if(slider.value <= NUMBER_THRESHOLD){
-            const newP = document.createElement("p");
-            newP.className ="bold";
-            newP.innerHTML = data[i];
-            newP.style.fontSize = Math.min(20,16/(data.length/30))+"px";
-            newBar.appendChild(newP);
-        }
+        const newP = document.createElement("p");
+        newP.className ="bold";
+        newP.innerHTML = data[i];
+        newP.style.fontSize = Math.min(20,16/(data.length/30))+"px";
+        if(slider.value > (NUMBER_THRESHOLD/(screenSize/windowSize))) newP.style.display = "none";
 
+        newBar.appendChild(newP);
         dataGraph.appendChild(newBar);
     }
 }
@@ -118,7 +120,7 @@ async function runGraph(){
         colorGraph(i,BLUE);
         colorGraph(i+1,BLUE);
         colorGraph(i+2,BLUE);
-        await sleep(400);
+        await sleep(speed*2);
         colorGraph(i);
         colorGraph(i+1);
         colorGraph(i+2);
@@ -137,6 +139,18 @@ randomize_button.addEventListener("click",function(){ // HANDLE "RANDOMIZE" BUTT
     randomizeData(data.length);
     createDataGraph();
 });
+
+window.addEventListener("resize",function(){
+    windowSize = window.innerWidth;
+    var displayStyle = "inline";
+    if (slider.value > (NUMBER_THRESHOLD/(screenSize/windowSize))){
+        displayStyle = "none";
+    }
+    console.log(slider.value,Math.floor((NUMBER_THRESHOLD/(screenSize/windowSize))))
+    for (var i=0; i<dataGraph.children.length; i++){
+        dataGraph.children[dataIndex[i]].children[0].style.display = displayStyle;
+    }
+})
 
 // INITIALIZE STARTING DATASET
 randomizeData(slider.value);
