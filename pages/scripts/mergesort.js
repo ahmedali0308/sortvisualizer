@@ -72,9 +72,7 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
         // GO THROUGH AGAIN BUT FROM YOUR POSITION SO IGNORE YOURSELF AND EVERYONE BEFORE YOU
         // FIND SMALLEST DATA
         // SWAP YOURSELF WITH THAT DATA
-        if (!_run){
-            return;
-        }
+        if (!_run) return;
         var smallestData = [tempData[sp+merged.length-1],tempDataIndex.indexOf(sp+merged.length-1)]; // VALUE, POS
         for (var j=i; j<=sp+merged.length-1;j++){
             if (smallestData[0]>=data[j]){
