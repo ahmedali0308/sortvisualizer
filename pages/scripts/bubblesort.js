@@ -5,7 +5,7 @@ async function bubbleSort(){
             if (!_run) return;
             if (data[j] > data[j + 1]) await swapData(j,j+1);
         }
-        colorGraph(data.length-i, GREEN);
+        colorGraph(data.length-i);
     }
 }
 

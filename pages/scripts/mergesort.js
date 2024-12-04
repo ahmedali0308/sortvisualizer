@@ -73,8 +73,6 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
         // FIND SMALLEST DATA
         // SWAP YOURSELF WITH THAT DATA
         if (!_run){
-            //data = tempData; 
-            //dataIndex = tempDataIndex;
             return;
         }
         var smallestData = [tempData[sp+merged.length-1],tempDataIndex.indexOf(sp+merged.length-1)]; // VALUE, POS
@@ -90,10 +88,7 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
 }
 
 async function mergeGraph(){
-    var dataSet = await mergeSort(data,dataIndex, 0);
-    //data = dataSet[0];
-    //dataIndex = dataSet[1];
-    //updateDataGraph();
+    await mergeSort(data,dataIndex, 0);
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON

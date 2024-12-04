@@ -6,26 +6,14 @@ const dataGraph = document.querySelector(".diagram");
 var data = [];
 var dataIndex = [];
 
-const NUMBER_THRESHOLD = 100 // THRESHOLD WHEN TO STOP SHOWING THE SIZE NUMBERS
-
 var _run = false // WHEN THIS IS FALSE THE RUN ANIMATION STOPS
 
 var speed = 100 // SPEED OF ANIMATION IN MS
 
 const BLUE = "#0800FF";
-const GRAY = "#D9D9D9";
 const RED = "red";
 const GREEN = "green";
-const BLACK = "black";
-
-const screenSize = window.screen.width;
-var windowSize =  window.innerWidth;
-
-var minPX = 5; // MIN PIXEL SIZE FOR NUMBERS
-var maxPX = 20; // MAX PIXEL SIZE FOR NUMBERS
-
-var WINDOW_THRESHOLD = scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD);
-var FONT_SIZE = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX/2);
+const BLACK = "rgb(255,255,0)";
 
 function scale (number, inMin, inMax, outMin, outMax) { // FUNCTION TO MAP RANGE ONTO OTHER RANGE
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -45,27 +33,26 @@ async function randomizeData(input){ // RE-INITIALIZES DATASET WITH RANDOM VALUE
 
 function createDataGraph(){ // DRAWS THE CURRENTLY SAVED DATASET ONTO THE GRAPHIC
     clearDataGraph();
-    dataGraph.style.gap = Math.min(0.5,10/(data.length/2))+"vw";
+    //dataGraph.style.gap = Math.min(0.5,10/(data.length/2))+"vw";
     for (var i=0; i<data.length; i++){
         // PRESET:
         // <li class="bar"><p class="bold">0.1</p></li>
         
         const newBar = document.createElement("li");
         newBar.className = "bar";
-        newBar.style.width = Math.min(10/(data.length/8),10)+"vw";
+        newBar.style.width = Math.min(10/(data.length/10),10)+"vw";
         newBar.style.height = data[i]/2+"vh";
         newBar.style.order = i;
+        newBar.style.backgroundColor = getColorAtIndex(i);
         newBar.id = i; // FOR DEBUGGING; NOT CODE RELEVANT
 
-        const newP = document.createElement("p");
-        newP.className ="bold";
-        newP.innerHTML = data[i];
-        newP.style.fontSize = FONT_SIZE+Math.min(10/(data.length/4),10)+"px";
-        if(slider.value > WINDOW_THRESHOLD) newP.style.display = "none";
-
-        newBar.appendChild(newP);
         dataGraph.appendChild(newBar);
     }
+}
+
+function getColorAtIndex(i){
+    var color = scale(data[i],1,100,10,255);
+    return "rgb("+8+","+0+","+color+")";
 }
 
 function disableSort(){
@@ -96,7 +83,7 @@ function sleep(delay) {
 }
 
 async function swapData(i,j){ // SWAPS INDICIES i AND j IN THE DATASET
-    colorGraph(i,BLUE);
+    colorGraph(i,GREEN);
     colorGraph(j,RED);
     await sleep(speed);
     const data_i = data[i];
@@ -114,7 +101,7 @@ async function swapData(i,j){ // SWAPS INDICIES i AND j IN THE DATASET
 function colorGraph(i,color){
     const dataGraphChild = dataGraph.children[dataIndex[i]];
     if (color) dataGraphChild.style.backgroundColor = color;
-    else dataGraphChild.style.backgroundColor = GRAY;
+    else dataGraphChild.style.backgroundColor = getColorAtIndex(i);
 }
 
 function decolorGraph(){
@@ -127,9 +114,9 @@ async function runGraph(){
     if (data.length <= 3) return;
     for (var i=0; i<data.length-2; i++){
         if (!_run) return;
-        colorGraph(i,BLUE);
-        colorGraph(i+1,BLUE);
-        colorGraph(i+2,BLUE);
+        colorGraph(i,GREEN);
+        colorGraph(i+1,GREEN);
+        colorGraph(i+2,GREEN);
         await sleep(speed*2);
         colorGraph(i);
         colorGraph(i+1);
@@ -149,19 +136,6 @@ randomize_button.addEventListener("click",function(){ // HANDLE "RANDOMIZE" BUTT
     randomizeData(data.length);
     createDataGraph();
 });
-
-window.addEventListener("resize",function(){
-    windowSize = window.innerWidth;
-    WINDOW_THRESHOLD = (scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD));
-    FONT_SIZE = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX/2);
-
-    var displayStyle = "inline";
-    if (slider.value > WINDOW_THRESHOLD) displayStyle = "none";
-    for (var i=0; i<dataGraph.children.length; i++){
-        dataGraph.children[dataIndex[i]].children[0].style.display = displayStyle;
-        dataGraph.children[dataIndex[i]].children[0].style.fontSize = FONT_SIZE+Math.min(10/(data.length/4),10)+"px";
-    }
-})
 
 // INITIALIZE STARTING DATASET
 randomizeData(slider.value);

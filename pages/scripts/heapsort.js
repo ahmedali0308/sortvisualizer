@@ -5,7 +5,7 @@ async function heapSort(){
         ep = data.length-i;
         await heapify(ep); // MOVE BIGGEST DATA TO HEAD OF BINARY TREE
         await swapData(0,ep); // SWAP HEAD AND END OF TREE (FIRST AND LAST ARRAY DATA)
-        colorGraph(ep,GREEN);
+        colorGraph(ep);
     }
 }
 
