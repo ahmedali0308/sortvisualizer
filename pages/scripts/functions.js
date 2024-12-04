@@ -25,6 +25,7 @@ var minPX = 5; // MIN PIXEL SIZE FOR NUMBERS
 var maxPX = 20; // MAX PIXEL SIZE FOR NUMBERS
 
 var WINDOW_THRESHOLD = scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD);
+var FONT_SIZE = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX/2);
 
 function scale (number, inMin, inMax, outMin, outMax) { // FUNCTION TO MAP RANGE ONTO OTHER RANGE
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -59,7 +60,7 @@ function createDataGraph(){ // DRAWS THE CURRENTLY SAVED DATASET ONTO THE GRAPHI
         const newP = document.createElement("p");
         newP.className ="bold";
         newP.innerHTML = data[i];
-        newP.style.fontSize = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX)+"px";
+        newP.style.fontSize = FONT_SIZE+Math.min(10/(data.length/4),10)+"px";
         if(slider.value > WINDOW_THRESHOLD) newP.style.display = "none";
 
         newBar.appendChild(newP);
@@ -151,13 +152,14 @@ randomize_button.addEventListener("click",function(){ // HANDLE "RANDOMIZE" BUTT
 
 window.addEventListener("resize",function(){
     windowSize = window.innerWidth;
-    WINDOW_THRESHOLD = (scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD))
+    WINDOW_THRESHOLD = (scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD));
+    FONT_SIZE = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX/2);
+
     var displayStyle = "inline";
     if (slider.value > WINDOW_THRESHOLD) displayStyle = "none";
-
     for (var i=0; i<dataGraph.children.length; i++){
         dataGraph.children[dataIndex[i]].children[0].style.display = displayStyle;
-        dataGraph.children[dataIndex[i]].children[0].style.fontSize = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX)+"px";
+        dataGraph.children[dataIndex[i]].children[0].style.fontSize = FONT_SIZE+Math.min(10/(data.length/4),10)+"px";
     }
 })
 
