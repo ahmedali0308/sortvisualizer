@@ -21,6 +21,15 @@ const BLACK = "black";
 const screenSize = window.screen.width;
 var windowSize =  window.innerWidth;
 
+var minPX = 5; // MIN PIXEL SIZE FOR NUMBERS
+var maxPX = 20; // MAX PIXEL SIZE FOR NUMBERS
+
+var WINDOW_THRESHOLD = scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD);
+
+function scale (number, inMin, inMax, outMin, outMax) { // FUNCTION TO MAP RANGE ONTO OTHER RANGE
+    return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+}
+
 function clearDataGraph(){ // REMOVES ALL THE BARS IN THE GRAPHIC
     while (dataGraph.firstChild) dataGraph.removeChild(dataGraph.lastChild);
 }
@@ -50,8 +59,8 @@ function createDataGraph(){ // DRAWS THE CURRENTLY SAVED DATASET ONTO THE GRAPHI
         const newP = document.createElement("p");
         newP.className ="bold";
         newP.innerHTML = data[i];
-        newP.style.fontSize = Math.min(20,16/(data.length/30))+"px";
-        if(slider.value > (NUMBER_THRESHOLD/(screenSize/windowSize))) newP.style.display = "none";
+        newP.style.fontSize = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX)+"px";
+        if(slider.value > WINDOW_THRESHOLD) newP.style.display = "none";
 
         newBar.appendChild(newP);
         dataGraph.appendChild(newBar);
@@ -142,13 +151,13 @@ randomize_button.addEventListener("click",function(){ // HANDLE "RANDOMIZE" BUTT
 
 window.addEventListener("resize",function(){
     windowSize = window.innerWidth;
+    WINDOW_THRESHOLD = (scale(windowSize,0,screenSize,0,NUMBER_THRESHOLD))
     var displayStyle = "inline";
-    if (slider.value > (NUMBER_THRESHOLD/(screenSize/windowSize))){
-        displayStyle = "none";
-    }
-    console.log(slider.value,Math.floor((NUMBER_THRESHOLD/(screenSize/windowSize))))
+    if (slider.value > WINDOW_THRESHOLD) displayStyle = "none";
+
     for (var i=0; i<dataGraph.children.length; i++){
         dataGraph.children[dataIndex[i]].children[0].style.display = displayStyle;
+        dataGraph.children[dataIndex[i]].children[0].style.fontSize = scale(WINDOW_THRESHOLD,0,NUMBER_THRESHOLD,minPX,maxPX)+"px";
     }
 })
 
