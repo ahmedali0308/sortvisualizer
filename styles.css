@@ -100,6 +100,13 @@
         background-color: black;
     }
 
+    .navcontent{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 15vw;
+    }
+
 /* Main Section Styling */
 
     div.mainbox {
@@ -187,7 +194,7 @@
         color: rgb(173, 173, 173);
     }
 
-    @media only screen and (max-width: 800px) {
+    @media only screen and (max-width: 1400px) {
         .maintop{
             flex-direction: column;
             gap: 20px;
@@ -202,20 +209,25 @@
         .diagram {
             height: 50vh;
         }
-        .navbar .logo img, h1{
-            display: none;
+        .navcontent{
+            flex-direction: column;
+            gap: 1vw;
         }
 
         ul.navbar {
-            flex-direction: column;
+            flex-direction: row;
             height: 30vh;
             justify-content: center;
-            gap:10px;
+            gap: 10vw;
         }
 
         ul.navbar ul.sortlist {
             flex-direction: column;
-            gap: 10px;
+            align-items: baseline;
+            gap: 1vw;
+        }
+        h1 {
+            font-size: 24px;
         }
 
         footer {
