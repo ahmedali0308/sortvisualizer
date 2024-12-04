@@ -1,0 +1,108 @@
+/* General Styling */
+
+:root{
+    --main-color: #0800FF;
+}
+
+* {
+    font-size: 16px;
+    font-family: 'IBM Plex Mono';
+    padding: 0px;
+    margin: 0px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+p {
+    font-size: 16px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+}
+
+.show-bullet {
+    list-style-type: circle;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    overflow-x: hidden;
+}
+
+/* Navbar Styling */
+
+ul.navbar {
+    background-color: #373737;
+    color: white;
+    align-items: center;
+    padding: 0px 77px;
+    height: 8.7vh;
+    min-height: 60px;
+    justify-content: space-between;
+}
+
+ul.navbar a {
+    color: white;
+    text-decoration: none;
+}
+
+ul.navbar div.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+ul.navbar div.logo img {
+    width: 60px;
+    height: 60px;
+}
+
+ul.navbar ul.sortlist {
+    align-items: center;
+    justify-content: space-between;
+    gap: 77px;
+}
+
+ul.navbar a h2 {
+    color: white;
+    background: none;
+    border: none;
+    padding: 2px;
+    transition-duration: 0.4s;
+}
+
+ul.navbar a h2:hover {
+    background-color: black;
+}
+
+.navcontent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15vw;
+}

@@ -1,0 +1,77 @@
+/* Footer styling */
+
+footer {
+    background-color: #373737;
+    min-height: 30px;
+    color: white;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+footer img {
+    width: 20px;
+    height: 20px;
+}
+
+footer ul.outer{
+    padding: 3.2vh 0;
+    display: flex;
+    flex-direction: row;
+    gap: 20%;
+}
+
+footer ul.inner{
+    display: flex;
+    flex-direction: column;
+}
+
+footer ul.inner li{
+    white-space: nowrap;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+footer ul.inner li a{
+    color: white;
+}
+footer ul.inner li a:visited{
+    color: rgb(173, 173, 173);
+}
+
+@media only screen and (max-width: 1400px) {
+body{
+    gap: 50px;
+}
+.navcontent{
+    flex-direction: column;
+    gap: 1vw;
+}
+
+ul.navbar div.logo {
+    flex-direction: column;
+    align-items: baseline;
+}
+ul.navbar {
+    flex-direction: row;
+    height: 30vh;
+    justify-content: center;
+    gap: 10vw;
+    min-height: 250px;
+}
+
+ul.navbar ul.sortlist {
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1vw;
+}
+h1 {
+    font-size: 24px;
+}
+
+footer ul.outer{
+    flex-direction: column;
+    gap: 20px;
+}
+}
