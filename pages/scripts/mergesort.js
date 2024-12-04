@@ -17,7 +17,7 @@ async function mergeSort(arr, arrIndex, sp){
         rIndex[i-h] = arrIndex[i];
     }
     
-    //var lr = await Promise.all([mergeSort(lData,lIndex, sp),mergeSort(rData,rIndex, sp + rData.length)]);
+    //var lr = await Promise.all([mergeSort(lData,lIndex, sp),mergeSort(rData,rIndex, sp + lData.length)]);
     var l = await mergeSort(lData,lIndex,sp);
     var r = await mergeSort(rData,rIndex,sp+lData.length);
     if (!_run) return;
@@ -92,8 +92,8 @@ async function mergeGraph(){
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
-    if (checkSorted()) return;
     if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
+    if (checkSorted()) return;
     else {
         _run = true;
         sort_button.style.backgroundColor = RED;

@@ -1,4 +1,5 @@
-const slider = document.querySelector(".sliderelement");
+const slider = document.querySelector("#dataslider");
+const speedslider = document.querySelector("#speedslider");
 const randomize_button = document.querySelector(".randomize");
 const sort_button = document.querySelector(".sort");
 
@@ -8,7 +9,7 @@ var dataIndex = [];
 
 var _run = false // WHEN THIS IS FALSE THE RUN ANIMATION STOPS
 
-var speed = 100 // SPEED OF ANIMATION IN MS
+var speed = speedslider.max-speedslider.value; // DELAY OF ANIMATION IN MS
 
 const BLUE = "#0800FF";
 const RED = "red";
@@ -111,16 +112,17 @@ function decolorGraph(){
 }
 
 async function runGraph(){
+    var drawSize = Math.floor(Math.max(3,data.length/10));
     if (data.length <= 3) return;
-    for (var i=0; i<data.length-2; i++){
+    for (var i=1-drawSize; i<data.length; i++){
         if (!_run) return;
-        colorGraph(i,GREEN);
-        colorGraph(i+1,GREEN);
-        colorGraph(i+2,GREEN);
+        for (var j=0;j<drawSize;j++){
+            if (data[i+j]) colorGraph(i+j, GREEN);
+        }
         await sleep(speed*2);
-        colorGraph(i);
-        colorGraph(i+1);
-        colorGraph(i+2);
+        for (var j=0;j<drawSize;j++){
+            if (data[i+j]) colorGraph(i+j);
+        }
     };
     decolorGraph();
 };
@@ -130,6 +132,11 @@ slider.addEventListener("input", function(){ // HANDLE SLIDER FOR "# of Data"
     dataIndex = [];
     randomizeData(this.value);
     createDataGraph();
+});
+
+speedslider.addEventListener("input", function(){ // HANDLE SLIDER FOR "Speed"
+    speed = speedslider.max-speedslider.value;
+    console.log(speed)
 });
 
 randomize_button.addEventListener("click",function(){ // HANDLE "RANDOMIZE" BUTTON

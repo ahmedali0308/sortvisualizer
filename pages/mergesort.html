@@ -49,10 +49,16 @@
                     <li><h1>Mergesort</h2></li>
                     <li>
                         <ul id="interactions">
-                            <li class="slider">
-                                <h2># of Data</h2>
-                                <input class="sliderelement" type="range" min="1" max="1000" value="10" id="myRange">
-                            </li>
+                            <ul class="slidercontainer">
+                                <li class="slider">
+                                    <h2>Speed</h2>
+                                    <input class="sliderelement" id="speedslider" type="range" min="9000" max="10000" value="9900" id="myRange">
+                                </li>
+                                <li class="slider">
+                                    <h2># of Data</h2>
+                                    <input class="sliderelement" id="dataslider" type="range" min="1" max="1000" value="10" id="myRange">
+                                </li>
+                            </ul>
                             <li>
                                 <button class="randomize">Randomize</button>
                             </li>

@@ -22,8 +22,8 @@ async function heapify(ep){
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
-    if (checkSorted()) return;
     if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
+    if (checkSorted()) return;
     else {
         _run = true;
         sort_button.style.backgroundColor = RED;

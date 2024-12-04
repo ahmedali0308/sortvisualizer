@@ -31,9 +31,15 @@
         gap: 10px;
     }
 
+    #interactions .slidercontainer {
+        display: flex;
+        flex-direction: row;
+        gap: 5vw;
+    }
+
     #interactions .slider .sliderelement{
         position: relative;
-        width: 27vw;
+        width: 15vw;
         height: 8px;
         -webkit-appearance: none;
         appearance: none;
@@ -112,6 +118,13 @@
         .maintop #interactions{
             flex-direction: row;
             gap: 10px;
+        }
+        #interactions .slidercontainer {
+            flex-direction: column;
+            gap: 1vw;
+        }
+        #interactions .slider .sliderelement{
+            width: 25vw;
         }
         #interactions button{
             width: 100px;
