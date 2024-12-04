@@ -23,6 +23,8 @@ async function mergeSort(arr, arrIndex, sp){
     if (!_run) return;
     //var l = lr[0];
     //var r = lr[1];
+
+    // UNCOMMENT LINE 20, 24, 25 AND COMMENT 21, 22 TO TOGGLE SYNC MERGING; BOTH SIDES MERGING AT THE SAME TIME -> REDUCES VISUAL TIME
     return await merge(l,r, sp);
 }
 
