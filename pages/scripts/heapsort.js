@@ -22,13 +22,14 @@ async function heapify(ep){
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
-    if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     if (checkSorted()) return;
+    if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     else {
-        _run = true;
-        sort_button.style.backgroundColor = RED;
+        enableSort();
         await heapSort();
         if (_run) await runGraph();
         disableSort();
     }
 });
+
+mirror_button.style.display = "none"; // HEAP SORT CANT BE SOLVED IN SYNC AS ITS NOT RECURSIVE

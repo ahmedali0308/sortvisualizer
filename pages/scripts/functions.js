@@ -1,7 +1,7 @@
 const slider = document.querySelector("#dataslider");
-const speedslider = document.querySelector("#speedslider");
 const randomize_button = document.querySelector(".randomize");
 const sort_button = document.querySelector(".sort");
+const mirror_button = document.querySelector(".mirror");
 
 const dataGraph = document.querySelector(".diagram");
 var data = [];
@@ -9,12 +9,14 @@ var dataIndex = [];
 
 var _run = false // WHEN THIS IS FALSE THE RUN ANIMATION STOPS
 
-var speed = speedslider.max-speedslider.value; // DELAY OF ANIMATION IN MS
+var _mirror = false;
+
+var speed = 150; // DELAY OF ANIMATION IN MS
 
 const BLUE = "#0800FF";
 const RED = "red";
 const GREEN = "green";
-const BLACK = "rgb(255,255,0)";
+const BLACK = "black";
 
 function scale (number, inMin, inMax, outMin, outMax) { // FUNCTION TO MAP RANGE ONTO OTHER RANGE
     return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
@@ -58,8 +60,17 @@ function getColorAtIndex(i){
 
 function disableSort(){
     _run = false;
+    mirror_button.disabled = false;
     sort_button.style.backgroundColor = BLUE;
+    sort_button.innerHTML = "Sort";
     decolorGraph();
+}
+
+function enableSort(){
+    _run = true;
+    mirror_button.disabled = true;
+    sort_button.style.backgroundColor = RED;
+    sort_button.innerHTML = "Stop";
 }
 
 function checkSorted(){
@@ -134,15 +145,17 @@ slider.addEventListener("input", function(){ // HANDLE SLIDER FOR "# of Data"
     createDataGraph();
 });
 
-speedslider.addEventListener("input", function(){ // HANDLE SLIDER FOR "Speed"
-    speed = speedslider.max-speedslider.value;
-    console.log(speed)
-});
-
 randomize_button.addEventListener("click",function(){ // HANDLE "RANDOMIZE" BUTTON
     randomizeData(data.length);
     createDataGraph();
 });
+
+mirror_button.style.backgroundColor = _mirror ? GREEN : RED;
+mirror_button.addEventListener("click",function(){
+    if (_run) return;
+    _mirror = !_mirror;
+    mirror_button.style.backgroundColor = _mirror ? GREEN : RED;
+})
 
 // INITIALIZE STARTING DATASET
 randomizeData(slider.value);

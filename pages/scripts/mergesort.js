@@ -17,14 +17,17 @@ async function mergeSort(arr, arrIndex, sp){
         rIndex[i-h] = arrIndex[i];
     }
     
-    //var lr = await Promise.all([mergeSort(lData,lIndex, sp),mergeSort(rData,rIndex, sp + lData.length)]);
-    var l = await mergeSort(lData,lIndex,sp);
-    var r = await mergeSort(rData,rIndex,sp+lData.length);
+    if (_mirror) var lr = await Promise.all([mergeSort(lData,lIndex, sp),mergeSort(rData,rIndex, sp + lData.length)]);
+    else {
+        var l = await mergeSort(lData,lIndex,sp);
+        var r = await mergeSort(rData,rIndex,sp+lData.length);
+    }
     if (!_run) return;
-    //var l = lr[0];
-    //var r = lr[1];
+    if (_mirror){
+        var l = lr[0];
+        var r = lr[1];
+    }
 
-    // UNCOMMENT LINE 20, 24, 25 AND COMMENT 21, 22 TO TOGGLE SYNC MERGING; BOTH SIDES MERGING AT THE SAME TIME -> REDUCES VISUAL TIME
     return await merge(l,r, sp);
 }
 
@@ -74,10 +77,10 @@ async function merge(l,r,sp){ // TURNS 2 ARRAYS INTO 1 SORTED ARRAY
         // GO THROUGH AGAIN BUT FROM YOUR POSITION SO IGNORE YOURSELF AND EVERYONE BEFORE YOU
         // FIND SMALLEST DATA
         // SWAP YOURSELF WITH THAT DATA
-        if (!_run) return;
         var smallestData = [tempData[sp+merged.length-1],tempDataIndex.indexOf(sp+merged.length-1)]; // VALUE, POS
         for (var j=i; j<=sp+merged.length-1;j++){
             if (smallestData[0]>=data[j]){
+                if (!_run) return;
                 smallestData = [data[j],j];
             }
         }
@@ -92,11 +95,10 @@ async function mergeGraph(){
 }
 
 sort_button.addEventListener("click",async function(){ // HANDLE "SORT" BUTTON
-    if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     if (checkSorted()) return;
+    if (_run) disableSort(); // IF ANIMATION ALREADY _run DISABLE
     else {
-        _run = true;
-        sort_button.style.backgroundColor = RED;
+        enableSort();
         await mergeGraph();
         if (_run) await runGraph();
         disableSort();
