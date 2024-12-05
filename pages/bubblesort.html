@@ -72,6 +72,38 @@
 
                 <li><ul class="diagram">
                 </ul></li>
+
+                <li>
+                    <br><hr><br>
+                    <h2 class="bold underline">Complexity Analysis</h2>
+                    <p class="italic"><span class="bold">Time Complexity: </span>O(n<sup>2</sup>)</p>
+                    <p class="italic"><span class="bold">Space Complexity: </span>O(1)</p>
+                    <br><hr><br>
+                    <h2 class="bold underline">How it works</h2><br>
+                    <p>Bubblesort is a simple sorting algorithm that <span class="main">repeatedly</span> steps through the input list 
+                        <span class="main">element by element</span>, comparing the current element with the one after it, <span class="main">comparing</span> 
+                        their values if needed. These passes through the list are repeated until no swaps 
+                        have to be performed during a pass, meaning that the list has become <span class="main">fully sorted</span>. 
+                        The algorithm, which is a <span class="main">comparison sort</span>, is named for the way the larger elements 
+                        "bubble" up to the top of the list.</p>
+                    <br><hr><br>
+                    <h2 class="bold underline">Pseudocode Implementation</h2><br>
+                    <pre><code><span class="green">// Initialize n as Length of Array</span>
+
+<span class="blue">BubbleSort</span>(A <span class="pink bold">as</span> Array, n <span class="pink bold">as</span> int){
+    <span class="pink bold">for</span> i = <span class="orange">0</span> to <n-span class="orange">2</n-span> {
+        <span class="pink bold">for</span> j = <span class="orange">0</span> to <n-span class="orange">2</n-span> {
+            <span class="pink bold">for</span> Array<span class="gray">[</span>j<span class="gray">]</span> > Array[j+<span class="orange">1</span><span class="gray">]</span> {
+                <span class="blue">swap</span>(Array<span class="gray">[</span>j<span class="gray">]</span>, Array<span class="gray">[</span>j+<span class="orange">1</span><span class="gray">]</span>)
+            }
+        }
+    }
+}</code></pre>
+                    <br>
+                    <p class="italic">Source: <a target="_blank" href="https://fullyunderstood.com/pseudocodes/bubble-sort/" style="color: black;">https://fullyunderstood.com/pseudocodes/bubble-sort/</a></p>
+                    <br><hr><br>
+                    <p class="italic">Source: <a target="_blank" href="https://en.wikipedia.org/wiki/Bubble_sort" style="color: black;">https://en.wikipedia.org/wiki/Bubble_sort</a></p>
+                </li>
             </ul>
         </div>
 

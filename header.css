@@ -33,6 +33,34 @@ p {
     font-style: italic;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
+.green {
+    color: rgb(0, 163, 0);
+}
+
+.pink {
+    color: #d171dd;
+}
+
+.orange {
+    color: #d19a66;
+}
+
+.main {
+    color: var(--main-color);
+}
+
+.blue {
+    color: #4284ae;
+}
+
+.gray {
+    color: #a0a0a0;
+}
+
 ul {
     list-style-type: none;
     display: flex;

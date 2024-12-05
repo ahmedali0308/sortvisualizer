@@ -73,6 +73,49 @@
 
                 <li><ul class="diagram">
                 </ul></li>
+
+                <li>
+                    <br><hr><br>
+                    <h2 class="bold underline">Complexity Analysis</h2>
+                    <p class="italic"><span class="bold">Time Complexity: </span>O(n<sup>2</sup>)</p>
+                    <p class="italic"><span class="bold">Space Complexity: </span>O(log n)</p>
+                    <br><hr><br>
+                    <h2 class="bold underline">How it works</h2><br>
+                    <p>Quicksort is a <span class="main">divide-and-conquer</span> algorithm. It works by selecting a '<span class="main">pivot</span>' element from 
+                        the array and <span class="main">partitioning</span> the other elements into <span class="main">two sub-arrays</span>, according to whether they 
+                        are less than or greater than the pivot. The sub-arrays are then sorted <span class="main">recursively</span>. 
+                        This can be done in-place, requiring small additional amounts of memory to perform 
+                        the sorting.</p>
+                    <br><hr><br>
+                    <h2 class="bold underline">Pseudocode Implementation</h2><br>
+                    <pre><code><span class="green">//low  --&gt; Starting index,  high  --&gt; Ending index</span>
+<span class="blue">sortPivotPosition</span>(A <span class="pink bold">as</span> Array, low <span class="pink bold">as</span> int, high <span class="pink bold">as</span> int) {
+    pivot = A<span class="gray">[</span>high<span class="gray">]</span>;  
+    
+    i = (low - <span class="orange">1</span>);
+
+    <span class="pink bold">for</span> (j = low; j &lt;= high - <span class="orange">1</span>; j++) {
+        <span class="pink bold">if</span> (A<span class="gray">[</span>j<span class="gray">]</span> &lt; pivot) {
+            i++;
+            swap A<span class="gray">[</span>i<span class="gray">]</span> and A<span class="gray">[</span>j<span class="gray">]</span>
+        }
+    }
+    swap A<span class="gray">[</span>i + <span class="orange">1</span><span class="gray">]</span> and A<span class="gray">[</span>high<span class="gray">]</span>)
+    <span class="pink bold">return</span> (i + <span class="orange">1</span>)
+}
+<span class="blue">quickSort</span>(A <span class="pink bold">as</span> Array, low <span class="pink bold">as</span> int, high <span class="pink bold">as</span> int) {
+    <span class="pink bold">if</span> (low &lt; high) {
+        pivot = <span class="blue">SortPivotPosition</span>(A, low, high);
+        <span class="blue">quickSort</span>(A, low, pivot - <span class="orange">1</span>);  
+        <span class="blue">quickSort</span>(A, pivot + <span class="orange">1</span>, high);
+    }
+}
+</code></pre>
+                    <br>
+                    <p class="italic">Source: <a target="_blank" href="https://fullyunderstood.com/pseudocodes/quick-sort/" style="color: black;">https://fullyunderstood.com/pseudocodes/quick-sort/</a></p>
+                    <br><hr><br>
+                    <p class="italic">Source: <a target="_blank" href="https://en.wikipedia.org/wiki/Quicksort" style="color: black;">https://en.wikipedia.org/wiki/Quicksort</a></p>
+                </li>
             </ul>
         </div>
 

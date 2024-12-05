@@ -71,6 +71,70 @@
 
                 <li><ul class="diagram">
                 </ul></li>
+
+                <li>
+                    <br><hr><br>
+                    <h2 class="bold underline">Complexity Analysis</h2>
+                    <p class="italic"><span class="bold">Time Complexity: </span>O(n log n)</p>
+                    <p class="italic"><span class="bold">Space Complexity: </span>O(n)</p>
+                    <br><hr><br>
+                    <h2 class="bold underline">How it works</h2><br>
+                    <p>Mergesort is an efficient, <span class="main">general-purpose, and comparison-based</span> sorting algorithm. Conceptually, a merge sort works as follows:</p>
+                    <br>
+                    <ol>
+                        <li>Keep <span class="main">dividing</span> the unsorted list into <span class="main">n sublists</span>, until they each contain one element (a list of one element is considered sorted).</li>
+                        <li>Repeatedly <span class="main">merge</span> sublists to produce new sorted sublists until there is <span class="main">only one sublist remaining</span>. This will be the sorted list.</li>
+                    </ol>
+                    <br><hr><br>
+                    <h2 class="bold underline">Pseudocode Implementation</h2><br>
+                    <pre><code><span class="blue">Merge</span>(LA <span class="pink bold">as</span> Array, RA <span class="pink bold">as</span> Array, A <span class="pink bold">as</span> Array) {
+    nL = Length of LeftArray (LA)
+    nR = Length of RightArray (RA)
+    i = j = k = <span class="orange">0</span>
+    <span class="pink bold">while</span>(i&lt;nL and j&lt;nR) {
+        <span class="pink bold">if</span>(LA<span class="gray">[</span>i<span class="gray">]</span> &lt;= RA<span class="gray">[</span>j<span class="gray">]</span>) {
+            A<span class="gray">[</span>k<span class="gray">]</span> = LA<span class="gray">[</span>i<span class="gray">]</span>
+            i = i+<span class="orange">1</span>
+        }
+        <span class="pink bold">else</span> {
+            A<span class="gray">[</span>k<span class="gray">]</span> = RA<span class="gray">[</span>j<span class="gray">]</span>
+            j = j+<span class="orange">1</span>
+        }
+        k = k+<span class="orange">1</span>
+    }
+    <span class="pink bold">while</span>(i&lt;nL) {
+        A<span class="gray">[</span>k<span class="gray">]</span> = LA<span class="gray">[</span>i<span class="gray">]</span>
+        i = i+<span class="orange">1</span>
+        k = k+<span class="orange">1</span>
+    }
+    <span class="pink bold">while</span>(j&lt;nR) {
+        A<span class="gray">[</span>k<span class="gray">]</span> = RA<span class="gray">[</span>j<span class="gray">]</span>
+        j = j+<span class="orange">1</span>
+        k = k+<span class="orange">1</span>
+    }
+}
+
+<span class="blue">MergeSort</span>(A <span class="pink bold">as</span> Array) {
+    n = length of Array (A)
+    <span class="pink bold">if</span>(n&lt;<span class="orange">2</span>)
+        return
+    mid = n/<span class="orange">2</span>
+    left = array of size(mid)
+    right = array of size(n-mid)
+    <span class="pink bold">for</span> i = <span class="orange">0</span> to mid-<span class="orange">1</span>
+        left<span class="gray">[</span>i<span class="gray">]</span> = A<span class="gray">[</span>i<span class="gray">]</span>
+    <span class="pink bold">for</span> i = mid to n-<span class="orange">1</span>
+        right<span class="gray">[</span>i-mid<span class="gray">]</span> = A<span class="gray">[</span>i<span class="gray">]</span>
+    <span class="blue">MergeSort</span>(left)
+    <span class="blue">MergeSort</span>(right)
+    <span class="blue">Merge</span>(left, right, A)
+}
+</code></pre>
+                    <br>
+                    <p class="italic">Source: <a target="_blank" href="https://fullyunderstood.com/pseudocodes/merge-sort/" style="color: black;">https://fullyunderstood.com/pseudocodes/merge-sort/</a></p>
+                    <br><hr><br>
+                    <p class="italic">Source: <a target="_blank" href="https://en.wikipedia.org/wiki/Merge_sort" style="color: black;">https://en.wikipedia.org/wiki/Merge_sort</a></p>
+                </li>
             </ul>
         </div>
 

@@ -68,9 +68,56 @@
                         </ul>
                     </li>
                 </ul></li>
-
+                
                 <li><ul class="diagram">
                 </ul></li>
+
+                <li>
+                    <br><hr><br>
+                    <h2 class="bold underline">Complexity Analysis</h2>
+                    <p class="italic"><span class="bold">Time Complexity: </span>O(n log n)</p>
+                    <p class="italic"><span class="bold">Space Complexity: </span>O(1)</p>
+                    <br><hr><br>
+                    <h2 class="bold underline">How it works</h2><br>
+                    <p>Heap sort is based exclusively upon a <span class="main">binary heap data structure</span>, where we find the largest 
+                        element and sort it to the <span class="main">end</span> of our unsorted collection. We use the properties of a complete 
+                        <span class="main">binary tree</span> to sort our collection efficiently.</p>
+                    <br>
+                    <img src="../images/heap.png" id="heapimg">
+                    <p class="italic" style="font-size: 8px">Source: <a style="font-size: 8px; color:black;" target="_blank" href="https://miro.medium.com/v2/resize:fit:1266/1*IJDDOZOsFGLpf445qo1XKw.png" style="color: black;">https://miro.medium.com/v2/resize:fit:1266/1*IJDDOZOsFGLpf445qo1XKw.png</a></p>
+                    <br>
+                    <br><hr><br>
+                    <h2 class="bold underline">Pseudocode Implementation</h2><br>
+                    <pre><code><span class="blue">Heapify</span>(A <span class="pink bold">as</span> array, n as int, i <span class="pink bold">as</span> int) {
+    max = i
+    leftchild = 2i + <span class="orange">1</span>
+    rightchild = 2i + <span class="orange">2</span>
+    <span class="pink bold">if</span> (leftchild &lt;= n) <span class="blue">and</span> (A<span class="gray">[</span>i<span class="gray">]</span> < A<span class="gray">[</span>leftchild<span class="gray">]</span>)
+        max = leftchild
+    <span class="pink bold">else</span> 
+        max = i
+    <span class="pink bold">if</span> (rightchild &lt;= n) <span class="blue">and</span> (A<span class="gray">[</span>max<span class="gray">]</span> > A<span class="gray">[</span>rightchild<span class="gray">]</span>)
+        max = rightchild
+    <span class="pink bold">if</span> (max != i)
+        <span class="blue">swap</span>(A<span class="gray">[</span>i<span class="gray">]</span>, A<span class="gray">[</span>max<span class="gray">]</span>)
+        <span class="blue">Heapify</span>(A, n, max)
+}
+
+<span class="green">// Initialize n as Length of Array</span>
+<span class="blue">Heapsort</span>(A <span class="pink bold">as</span> array, n <span class="pink bold">as</span> int) {
+    <span class="pink bold">for</span> i = n/<span class="orange">2</span> downto <span class="orange">1</span>
+        <span class="blue">Heapify</span>(A, n ,i)
+    
+    <span class="pink bold">for</span> i = n downto <span class="orange">2</span>
+        exchange A<span class="gray">[<span class="orange">1</span>]</span> with A<span class="gray">[</span>i<span class="gray">]</span>
+        A.heapsize = A.heapsize - <span class="orange">1</span>
+        <span class="blue">Heapify</span>(A, i, <span class="orange">0</span>)
+}</code></pre>
+                    <br>
+                    <p class="italic">Source: <a target="_blank" href="https://fullyunderstood.com/pseudocodes/heap-sort/" style="color: black;">https://fullyunderstood.com/pseudocodes/heap-sort/</a></p>
+                    <br><hr><br>
+                    <p class="italic">Source: <a target="_blank" href="https://en.wikipedia.org/wiki/Heapsort" style="color: black;">https://en.wikipedia.org/wiki/Heapsort</a></p>
+                </li>
             </ul>
         </div>
 
